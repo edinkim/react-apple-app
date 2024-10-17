@@ -1,7 +1,7 @@
 import { useRef } from "react"
 import { imageBasePath } from "../../constant"
 import './MovieModal.css'
-import useOnClickOutside from "../../hooks/useOnclickOutside";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 
 const MovieModal = ({
     backdrop_path,

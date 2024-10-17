@@ -1,23 +1,29 @@
+import { useRef } from "react"
 import { imageBasePath } from "../../constant"
 import './MovieModal.css'
+import useOnClickOutside from "../../hooks/useOnclickOutside";
 
 const MovieModal = ({
-    backdrop_path, 
-    title, 
-    overview, 
-    name, 
-    release_date, 
-    first_air_date, 
+    backdrop_path,
+    title,
+    overview,
+    name,
+    release_date,
+    first_air_date,
     vote_average,
-    setModalOpen}) => {
+    setModalOpen }) => {
+    const ref = useRef(null);
+    useOnClickOutside(ref, () => {
+        setModalOpen(false);
+    })
     return (
         <div className='presentation' role="presenation">
             <div className='wrapper-modal'>
-                <div className='modal'>
+                <div className='modal' ref={ref}>
                     <span
-                    onClick={()=>setModalOpen(false)}
-                    className='modal-close'>X</span>
-                    <img 
+                        onClick={() => setModalOpen(false)}
+                        className='modal-close'>X</span>
+                    <img
                         className='modal__poster-img'
                         src={`${imageBasePath}${backdrop_path}`}
                         alt="modal_poster-img"
